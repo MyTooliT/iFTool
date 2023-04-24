@@ -15,6 +15,9 @@ Script to run IFTool on macOS using CrossOver
 1. Open the CrossOver application
 2. Go to “CrossOver” → “Settings…” (<kbd>⌘</kbd> + <kbd>,</kbd>)
 3. Disable “Launch Installer Assistant when CrossOver opens a .exe file”
+
+   ![CrossOver Preferences](Pictures/CrossOver%20Preferences.webp)
+
 4. Create a new bottle
    1. Select “Bottle” → “New Bottle…”
    2. Choose a name of your liking e.g. “IFTool”
