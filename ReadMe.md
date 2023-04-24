@@ -26,8 +26,7 @@ Script to run IFTool on macOS using CrossOver
 
 ### Script
 
-1. Replace `128.130.106.43` in [`iftool.sh`](iftool.sh) with your static IP address
-2. Replace `TU Vienna` with the name of your [TU Vienna VPN configuration](https://www.it.tuwien.ac.at/en/services/network-infrastructure-and-server-services/tunet/vpn-virtual-private-network)
+- Replace `TU Vienna` with the name of your [TU Vienna VPN configuration](https://www.it.tuwien.ac.at/en/services/network-infrastructure-and-server-services/tunet/vpn-virtual-private-network) or rename your VPN configuration to “TU Vienna”
 
 ## Usage
 

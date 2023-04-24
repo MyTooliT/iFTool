@@ -8,13 +8,12 @@ print_info() {
 
 init() {
 	vpn="$1"
-	tu_vienna_ip="$2"
-	smb_path="$3"
+	smb_path="$2"
 
 	print_info "Determine external IP\n"
 	external_ip="$(curl 2> /dev/null ifconfig.me)"
 	print_info "External IP: %s\n" "$external_ip"
-	if [ "$external_ip" != "$tu_vienna_ip" ]; then
+	if ! printf '%s' "$external_ip" | grep -Eq '^128\.130\.'; then
 		print_info 'Connect to VPN “%s”\n' "$vpn"
 		networksetup -connectpppoeservice "$vpn"
 	fi
@@ -49,7 +48,6 @@ cleanup() {
 }
 
 main() {
-	tu_vienna_ip=128.130.106.43 # Static IP inside TU network
 	vpn='TU Vienna'
 
 	iftool_directory_prefix='30_IT'
@@ -58,7 +56,7 @@ main() {
 	iftool_mountpoint="/Volumes/$iftool_directory_prefix"
 	iftool_path="$iftool_mountpoint/$iftool_directory/IFT_Tool.exe"
 
-	init "$vpn" "$tu_vienna_ip" "$smb_path"
+	init "$vpn" "$smb_path"
 	iftool "$iftool_path"
 	cleanup "$vpn" "$iftool_mountpoint"
 }
