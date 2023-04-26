@@ -6,6 +6,11 @@ print_info() {
 	printf "⚙️  $@"
 }
 
+exit_error() {
+	printf >&2 "😱 \033[31;1;4m$@\033[0m"
+	exit 1
+}
+
 init() {
 	vpn="$1"
 	smb_path="$2"
@@ -18,7 +23,12 @@ init() {
 		networksetup -connectpppoeservice "$vpn"
 	fi
 	print_info "Mount SMB volume\n"
-	osascript -e "mount volume \"$smb_path\"" > /dev/null
+	message="$(osascript -e "mount volume \"$smb_path\"" 2>&1 > /dev/null)"
+	if [ "$?" -ne 0 ]; then
+		error_message="Unable to mount SMB volume: $message\n"
+		exit_error "$error_message"
+	fi
+
 }
 
 iftool() {
