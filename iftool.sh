@@ -18,7 +18,7 @@ init() {
 	print_info "Determine external IP\n"
 	external_ip="$(curl 2> /dev/null ifconfig.me)"
 	print_info "External IP: %s\n" "$external_ip"
-	if ! printf '%s' "$external_ip" | grep -Eq '^128\.130\.'; then
+	if ! printf '%s' "$external_ip" | grep -Eq '^128\.130\.106'; then
 		print_info 'Connect to VPN “%s”\n' "$vpn"
 		networksetup -connectpppoeservice "$vpn"
 	fi
