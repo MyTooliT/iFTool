@@ -1,6 +1,19 @@
 # iFTool
 
-Script to run IFTool on macOS using CrossOver
+Script to run [IFTool](smb://data.ift.tuwien.ac.at/30_IT/01_IFT_Tool) on macOS using CrossOver
+
+This tool basically automates the following tasks
+
+1. Opens a VPN tunnel to TU Vienna, if your computer does not use an internal IP (`128.130.106.…`) address, i.e. your computer is not connected via Ethernet to the (IFT part) of the university network
+2. Mount the SMB volume that contains the IFTool
+3. Opens the IFTool using CrossOver
+4. Cleans up resources:
+
+   - Closes VPN tunnel
+   - Unmounts SMB share
+   - Closes CrossOver
+
+   after you closed the IFTool
 
 [CrossOver]: https://www.codeweavers.com/crossover
 
