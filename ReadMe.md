@@ -25,6 +25,8 @@ This tool basically automates the following tasks
 
 ### CrossOver
 
+The preparation steps below should be the same, regardless of if you want to use the IFTool manually or use this script:
+
 1. Open the CrossOver application
 2. Go to “CrossOver” → “Settings…” (<kbd>⌘</kbd> + <kbd>,</kbd>)
 3. Disable “Launch Installer Assistant when CrossOver opens a .exe file”
@@ -37,9 +39,17 @@ This tool basically automates the following tasks
    3. Choose “Windows 10 64-Bit” as Bottle type
 5. Optional: Enable “High Resolution Mode” for your Bottle
 
+If you want to use the IFTool manually, then the only thing left is to mount:
+
+```
+smb://data.ift.tuwien.ac.at/30_IT/01_IFT_Tool
+```
+
+in Finder (<kbd>⌘</kbd> + <kbd>K</kbd>) and open `IFT_Tool.exe` with the CrossOver application. If you want to use the script, then please read on.
+
 ### Script
 
-- Replace `TU Vienna` with the name of your [TU Vienna VPN configuration](https://www.it.tuwien.ac.at/en/services/network-infrastructure-and-server-services/tunet/vpn-virtual-private-network) or rename your VPN configuration to “TU Vienna”
+The script assumes that your VPN network configuration for the university is called `TU Vienna`. If that is not the case, then please replace `TU Vienna` with the name of your [TU Vienna VPN configuration](https://www.it.tuwien.ac.at/en/services/network-infrastructure-and-server-services/tunet/vpn-virtual-private-network) or rename your VPN configuration to “TU Vienna”.
 
 ## Usage
 
