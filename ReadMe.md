@@ -58,3 +58,33 @@ Please use the following command inside the root of this repository
 ```sh
 ./iftool.sh
 ```
+
+## GUI Launcher
+
+If you want you can also create a very basic application with Automator that launches the script contained in this repository. This way you only need to double click the application icon and do not need to open Terminal to run the script.
+
+1. Open Automator
+2. Select “Application” and click on “Choose”:
+
+   ![Create Application](Pictures/Create-Application.webp)
+
+3. Drag (and drop) the “Run Shell Script” action into the workflow
+4. Choose `/bin/zsh` as Shell and “Pass input: to stdin”
+5. Add the path to the script `iftool.sh` on your computer. For example, if your script is stored inside the directory `Documents/Work/Projects/General/iFTool` inside your home folder, then paste the text:
+
+   ```
+   "$HOME/Documents/Work/Projects/General/iFTool/iftool.sh"
+   ```
+
+   into the action:
+
+   ![Automator Application](Pictures/Automator-Application.webp)
+
+6. Store the application (<kbd>⌘</kbd> + <kbd>S</kbd>) as “IFTool”
+7. Optional: Change the icon
+
+   1. Copy the file [`ApplicationStub.icns`](Pictures/ApplicationStub.icns)
+   2. Navigate to the directory where you stored the application from step 5.
+   3. Right click on the application and choose “Show Package Contents”
+   4. Go to the subdirectory `Contents/Resources`
+   5. Paste `ApplicationStub.icns` to overwrite the generic Automator application icon
