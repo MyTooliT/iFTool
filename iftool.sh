@@ -55,6 +55,8 @@ cleanup() {
 
 	diskutil unmount "$iftool_mountpoint" > /dev/null
 	networksetup -disconnectpppoeservice "$vpn"
+
+	killall CrossOver
 }
 
 main() {
