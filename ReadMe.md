@@ -46,5 +46,5 @@ This tool basically automates the following tasks
 Please use the following command inside the root of this repository
 
 ```sh
-zsh iftool.sh
+./iftool.sh
 ```
