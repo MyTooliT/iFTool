@@ -38,13 +38,13 @@ iftool() {
 	open -a CrossOver "$iftool_path"
 
 	# Wait until IFTool is ready
-	while ! pgrep -lq wine64-preloader; do
+	while ! pgrep -lq IFT_Tool.exe; do
 		sleep 1
 	done
 
 	# Wait until IFTool is closed
 	print_info "Wait until IFTool is closed…\n"
-	while pgrep -lq wine64-preloader; do
+	while pgrep -lq IFT_Tool.exe; do
 		sleep 1
 	done
 }
