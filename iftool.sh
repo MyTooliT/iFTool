@@ -22,6 +22,9 @@ init() {
 	if ! printf '%s' "$external_ips" | grep -Eq "$internal_ip_regex"; then
 		print_info 'Connect to VPN “%s”\n' "$vpn"
 		networksetup -connectpppoeservice "$vpn"
+		# Workaround for: https://github.com/MyTooliT/iFTool/issues/1
+		# TODO: Wait until connection is really ready
+		sleep 5
 	fi
 	print_info "Mount SMB volume\n"
 	message="$(osascript -e "mount volume \"$smb_path\"" 2>&1 > /dev/null)"
