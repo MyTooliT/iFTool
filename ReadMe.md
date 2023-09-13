@@ -88,7 +88,3 @@ If you want you can also create a very basic application with Automator that lau
    3. Right click on the application and choose “Show Package Contents”
    4. Go to the subdirectory `Contents/Resources`
    5. Paste `ApplicationStub.icns` to overwrite the generic Automator application icon
-
-## Known Issues
-
-- [Starting the program might fail the first time](https://github.com/MyTooliT/iFTool/issues/1), if **you are not connected to the TU network via Ethernet**
