@@ -14,11 +14,12 @@ exit_error() {
 init() {
 	vpn="$1"
 	smb_path="$2"
+	internal_ip_regex="^128\.130\.106"
 
 	print_info "Determine external IP\n"
-	external_ip="$(curl 2> /dev/null ifconfig.me)"
-	print_info "External IP: %s\n" "$external_ip"
-	if ! printf '%s' "$external_ip" | grep -Eq '^128\.130\.106'; then
+	external_ips="$(ifconfig -l | xargs -n1 ipconfig getifaddr)"
+	print_info "External IPs:\n%s\n" "$external_ips"
+	if ! printf '%s' "$external_ips" | grep -Eq "$internal_ip_regex"; then
 		print_info 'Connect to VPN “%s”\n' "$vpn"
 		networksetup -connectpppoeservice "$vpn"
 	fi
