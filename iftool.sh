@@ -45,7 +45,7 @@ iftool() {
 	iftool_path="$1"
 
 	print_info "Open IFTool\n"
-	open -a CrossOver "$iftool_path"
+	open -jga CrossOver "$iftool_path"
 
 	# Wait until IFTool is ready
 	while ! pgrep -lq IFT_Tool.exe; do
