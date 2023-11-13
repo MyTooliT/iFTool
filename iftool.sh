@@ -17,7 +17,7 @@ init() {
 	internal_ip_regex="^(128\.130\.106|128\.131\.237)"
 
 	print_info "Determine external IP\n"
-	external_ips="$(ifconfig -l | xargs -n1 ipconfig getifaddr)"
+	external_ips="$(curl ifconfig.me)"
 	print_info "External IPs:\n%s\n" "$external_ips"
 	if ! printf '%s' "$external_ips" | grep -Eq "$internal_ip_regex"; then
 		print_info 'Connect to VPN “%s”\n' "$vpn"
