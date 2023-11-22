@@ -88,3 +88,8 @@ If you want you can also create a very basic application with Automator that lau
    3. Right click on the application and choose “Show Package Contents”
    4. Go to the subdirectory `Contents/Resources`
    5. Paste `ApplicationStub.icns` to overwrite the generic Automator application icon
+
+## Known Problems
+
+- No pictures in “Mitarbeiterinformationen” (“Extras” → “Telefonnummern” <kbd>Ctrl</kbd> + <kbd>T</kbd>)
+- Items in “Hilfe” menu do not work (e.g. “Hilfe” → “IFT_Tool allgemein”); Workaround: Link to [SMB share containing help documents](smb://data.ift.tuwien.ac.at/01_IFT/40_Informationen-f%C3%BCr-neue-MA))
