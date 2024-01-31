@@ -47,6 +47,12 @@ iftool() {
 	print_info "Open IFTool\n"
 	open -jga CrossOver "$iftool_path"
 
+	# Hide CrossOver window
+	osascript -e '
+	tell application "System Events"
+		set visible of application process "CrossOver" to false
+	end tell'
+
 	# Wait until IFTool is ready
 	while ! pgrep -lq IFT_Tool.exe; do
 		sleep 1
