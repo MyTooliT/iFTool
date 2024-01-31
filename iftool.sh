@@ -14,7 +14,7 @@ exit_error() {
 init() {
 	vpn="$1"
 	smb_path="$2"
-	internal_ip_regex="^(128\.130\.106|128\.131\.237)"
+	internal_ip_regex="^(128\.130\.106|128\.131)"
 
 	print_info "Determine external IP\n"
 	external_ips="$(curl ifconfig.me)"
