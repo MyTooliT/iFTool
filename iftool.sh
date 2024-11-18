@@ -11,6 +11,15 @@ exit_error() {
 	exit 1
 }
 
+get_wine_app() {
+	if mdfind "kMDItemKind == 'Application'" | grep -q CrossOver; then
+		wine_app=CrossOver
+	elif mdfind "kMDItemKind == 'Application'" | grep -q 'Wine Stable'; then
+		wine_app='Wine Stable'
+	fi
+	printf "%s" "$wine_app"
+}
+
 init() {
 	vpn="$1"
 	smb_path="$2"
@@ -44,14 +53,17 @@ init() {
 iftool() {
 	iftool_path="$1"
 
+	wine_app="$(get_wine_app)"
 	print_info "Open IFTool\n"
-	open -jga CrossOver "$iftool_path"
+	open -jga "$wine_app" "$iftool_path"
 
-	# Hide CrossOver window
-	osascript -e '
+	if [ $wine_app = "CrossOver" ]; then
+		# Hide CrossOver window
+		osascript -e '
 	tell application "System Events"
 		set visible of application process "CrossOver" to false
 	end tell'
+	fi
 
 	# Wait until IFTool is ready
 	while ! pgrep -lq IFT_Tool.exe; do
@@ -72,7 +84,7 @@ cleanup() {
 	diskutil unmount "$iftool_mountpoint" > /dev/null
 	networksetup -disconnectpppoeservice "$vpn"
 
-	killall CrossOver
+	killall "$(get_wine_app)"
 }
 
 main() {
